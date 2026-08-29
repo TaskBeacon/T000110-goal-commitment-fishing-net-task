@@ -1,0 +1,23 @@
+id: T000110
+slug: goal-commitment-fishing-net-task
+title: Goal Commitment / Fishing-Net Task
+acquisition: behavior
+variant: baseline
+license: MIT
+language: Chinese
+canonical: true
+cognitive_domain: [goal-commitment, decision-making, cognitive-flexibility]
+maturity: smoke_tested
+version:
+  release_tag: v0.1.0
+contracts:
+  taps: v0.2.0
+runtime:
+  profile: psyflow
+  entrypoint: main.py
+evidence:
+  - https://doi.org/10.1038/s41562-024-01844-5
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC6377599/
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC4437670/
+maintainer: [TaskBeacon]
+

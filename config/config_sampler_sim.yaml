@@ -1,0 +1,81 @@
+subinfo_fields: [{name: subject_id, type: int, constraints: {min: 101, max: 999, digits: 3}}]
+subinfo_mapping: {subject_id: 被试编号（三位数字）, Participant Information: 被试信息, registration_failed: 登记失败, registration_successful: 登记成功, invalid_input: "{field} 输入无效"}
+window: {size: [1280, 720], units: pix, screen: 0, bg_color: "#07111F", fullscreen: false, monitor_width_cm: 35.5, monitor_distance_cm: 60}
+task:
+  task_name: goal_commitment_fishing_net_task
+  task_version: 0.1.0
+  save_path: ./outputs/sim_sampler
+  language: Chinese
+  voice_name: zh-CN-YunyangNeural
+  voice_enabled: false
+  seed_mode: same_within_sub
+  overall_seed: 110110
+  total_blocks: 1
+  total_trials: 6
+  trial_per_block: 6
+  trials_per_block: 6
+  conditions: [decision_trial]
+  condition_weights: null
+  continue_key: space
+  key_list: [space, "1", "2", "3"]
+  cognitive_domain: [goal_commitment, decision_making, cognitive_flexibility]
+  variant: baseline
+  option_row_y: [150, 20, -110]
+  creature_x: -205
+  offer_zero_x: -90
+  offer_pixels_per_unit: 24
+  offer_max_width: 360
+  net_left_x: -250
+  net_width: 690
+  net_y: -270
+  net_icon_x: -330
+  delta: 0.0
+timing: {offer_preview_s: 2.0, choice_window_s: 30.0, net_update_s: 2.4}
+stimuli:
+  ocean_panel: {type: rect, width: 1180, height: 650, pos: [0, 0], fillColor: black, lineColor: "#D6A23A", lineWidth: 5}
+  instruction_text: {type: text, font: SimHei, text: "你的目标是在固定试次数内装满尽可能多的渔网。\n\n每轮会出现螃蟹、章鱼和鱼三种报价；绿色条会增加渔网内容，红色条会减少内容，但不会低于零。\n\n一个渔网一次只能装一种海产。继续选择当前海产会保留进度；改选另一种海产会先放弃已有进度，再加入新报价。\n\n按 1、2、3 选择屏幕上方、中间、下方的海产。每装满一张网得 1 分。\n\n按空格键开始。", color: white, height: 26, wrapWidth: 1040, pos: [0, 0]}
+  goal_intro_text: {type: text, font: SimHei, text: "新的渔网已经准备好。\n下方灰条表示这张网需要装满的容量。\n\n按空格键查看报价。", color: white, height: 30, wrapWidth: 900, pos: [0, 80]}
+  status_text: {type: text, font: SimHei, text: "已装满渔网  {points}\n剩余试次  {remaining}/{total}", color: white, height: 22, alignText: right, pos: [470, 278]}
+  choice_prompt: {type: text, font: SimHei, text: "?", color: white, height: 74, pos: [440, 20]}
+  net_label: {type: text, font: SimHei, text: 当前渔网, color: white, height: 22, pos: [95, -215]}
+  net_empty_text: {type: text, font: SimHei, text: 尚未选择, color: "#CBD5E1", height: 18, pos: [-330, -270]}
+  complete_text: {type: text, font: SimHei, text: "渔网已装满！  +1\n累计 {points} 分", color: "#FDE68A", height: 24, wrapWidth: 280, pos: [470, -215]}
+  good_bye_text: {type: text, font: SimHei, text: "任务完成。\n\n你在 {trials} 个试次中装满了 {points} 张渔网。\n\n感谢参与，按空格键退出。", color: white, height: 32, wrapWidth: 920, pos: [0, 0]}
+  crab_icon: {type: image, image: assets/crab.png, size: [64, 64], pos: [-205, 150], interpolate: true}
+  octopus_icon: {type: image, image: assets/octopus.png, size: [64, 64], pos: [-205, 20], interpolate: true}
+  fish_icon: {type: image, image: assets/fish.png, size: [64, 64], pos: [-205, -110], interpolate: true}
+  offer_track: {type: rect, width: 360, height: 42, pos: [90, 0], fillColor: "#E5E7EB", lineColor: "#9CA3AF", lineWidth: 2}
+  offer_positive_bar: {type: rect, width: 120, height: 32, pos: [-30, 0], fillColor: "#16C75D", lineColor: "#16C75D", lineWidth: 1}
+  offer_negative_bar: {type: rect, width: 120, height: 32, pos: [-150, 0], fillColor: "#EF4444", lineColor: "#EF4444", lineWidth: 1}
+  net_track: {type: rect, width: 690, height: 48, pos: [95, -270], fillColor: "#E5E7EB", lineColor: "#9CA3AF", lineWidth: 2}
+  net_fill: {type: rect, width: 100, height: 40, pos: [-200, -270], fillColor: "#4C9BE8", lineColor: "#4C9BE8", lineWidth: 1}
+triggers:
+  map: {exp_onset: 1, exp_end: 2, block_onset: 10, block_end: 11, goal_intro_onset: 12, offer_preview_onset: 20, choice_onset: 30, choice_top: 31, choice_middle: 32, choice_bottom: 33, choice_timeout: 34, net_update_onset: 40, goal_complete_onset: 41, good_bye_onset: 60}
+  driver: {type: serial_url, url: "loop://", baudrate: 115200, timeout: 1, prefix: [1, 225, 1, 0]}
+  policy: {strict: false}
+  timing: {post_delay_s: 0.001}
+controller:
+  seed: 110110
+  schedule_mode: scripted
+  scripted_trials:
+    - {net_size: 20, offers: {crab: 5, octopus: 4, fish: 3}, display_order: [crab, octopus, fish]}
+    - {offers: {crab: 5, octopus: 7, fish: 3}, display_order: [crab, octopus, fish]}
+    - {offers: {crab: -2, octopus: 9, fish: 4}, display_order: [octopus, crab, fish]}
+    - {offers: {crab: 10, octopus: 5, fish: 2}, display_order: [octopus, crab, fish]}
+    - {offers: {crab: 12, octopus: 7, fish: 1}, display_order: [octopus, crab, fish]}
+    - {net_size: 18, offers: {crab: 4, octopus: 6, fish: 5}, display_order: [fish, octopus, crab]}
+sim:
+  output_dir: outputs/sim_sampler
+  seed: 110111
+  participant_id: sampler110
+  session_id: sub-sampler110_task-goal-commitment-fishing-net-task_seed110111
+  log_path: outputs/sim_sampler/sub-sampler110_task-goal-commitment-fishing-net-task_seed110111_sim_events.jsonl
+  policy: warn
+  default_rt_s: 0.05
+  clamp_rt: true
+  enable_scaling: true
+  timing_scale: 0.05
+  min_frames: 1
+  responder:
+    type: responders.task_sampler:TaskSamplerResponder
+    kwargs: {response_rate: 1.0, rt_mean_s: 0.05, rt_sd_s: 0.0}

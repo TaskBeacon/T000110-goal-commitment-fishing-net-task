@@ -1,0 +1,81 @@
+[
+  {
+    "id": "HOLTON2024",
+    "title": "Goal commitment is supported by vmPFC through selective attention",
+    "authors": [
+      "Eleanor Holton",
+      "Jan Grohn",
+      "Harry Ward",
+      "Sanjay G. Manohar",
+      "Jill X. O'Reilly",
+      "Nils Kolling"
+    ],
+    "year": 2024,
+    "journal": "Nature Human Behaviour",
+    "doi_or_url": "https://www.nature.com/articles/s41562-024-01844-5",
+    "citation_count": 21,
+    "is_high_impact": true,
+    "open_access": true,
+    "used_for": [
+      "primary_protocol_source",
+      "primary_protocol",
+      "task_timing",
+      "schedule_generation",
+      "stimulus_layout",
+      "scoring"
+    ],
+    "parameter_bindings": {},
+    "notes": "User-provided primary protocol. Open-access article, Extended Data Fig. 1, Supplementary Information, and OSF record were inspected on 2026-08-29; citation count from OpenAlex.",
+    "source_kind": "url",
+    "source_locator": "https://www.nature.com/articles/s41562-024-01844-5",
+    "attachments": {
+      "paper_pdf": null,
+      "methods_path": null
+    }
+  },
+  {
+    "id": "SWEIS2018",
+    "title": "Sensitivity to sunk costs in mice, rats, and humans",
+    "authors": [
+      "Brian M. Sweis",
+      "Samantha V. Abram",
+      "Brandy J. Schmidt",
+      "Kelsey D. Seeland",
+      "Angus W. MacDonald III",
+      "Mark J. Thomas",
+      "David Redish"
+    ],
+    "year": 2018,
+    "journal": "Science",
+    "doi_or_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6377599/",
+    "citation_count": 161,
+    "is_high_impact": true,
+    "open_access": true,
+    "used_for": [
+      "sunk_cost_construct_context",
+      "cross_species_persistence_context"
+    ],
+    "parameter_bindings": {},
+    "notes": "Open author manuscript in PubMed Central. Citation count from OpenAlex on 2026-08-29; not used for Fishing-Net Task timing or stimuli."
+  },
+  {
+    "id": "MCGUIRE2015",
+    "title": "Medial prefrontal cortical activity reflects dynamic re-evaluation during voluntary persistence",
+    "authors": [
+      "Joseph T. McGuire",
+      "Joseph W. Kable"
+    ],
+    "year": 2015,
+    "journal": "Nature Neuroscience",
+    "doi_or_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4437670/",
+    "citation_count": 103,
+    "is_high_impact": true,
+    "open_access": true,
+    "used_for": [
+      "voluntary_persistence_context",
+      "dynamic_revaluation_context"
+    ],
+    "parameter_bindings": {},
+    "notes": "Open author manuscript in PubMed Central. Citation count from OpenAlex on 2026-08-29; not used for Fishing-Net Task timing or stimuli."
+  }
+]
